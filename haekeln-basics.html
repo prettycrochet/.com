@@ -168,19 +168,22 @@
     .steps-section { background: var(--white); }
     .steps-list { display: flex; flex-direction: column; gap: 0; max-width: 74ch; }
     .step-row {
-      display: grid;
-      grid-template-columns: 60px 1fr;
+      display: flex;
+      align-items: flex-start;
       gap: 1.6rem;
       padding: 1.8rem 0;
       border-bottom: 1px solid var(--beige);
     }
     .step-row:first-child { padding-top: 0; }
     .step-num {
+      flex-shrink: 0;
+      width: 40px;
       font-family: 'Cormorant Garamond', serif;
       font-size: 2rem;
       font-weight: 300;
       color: var(--salbei);
     }
+    .step-content { flex: 1; min-width: 0; }
     .step-content h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.2rem;
@@ -188,6 +191,19 @@
       margin-bottom: 0.4rem;
     }
     .step-content p { font-size: 0.92rem; color: var(--muted); }
+
+    /* Kleines Bild rechts neben dem Schritt-Text */
+    .step-image {
+      flex-shrink: 0;
+      align-self: center;
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    @media (max-width: 480px) {
+      .step-image { width: 64px; height: 64px; }
+    }
 
     /* ── STITCH CARDS (Grundmaschen) ── */
     .stitch-section { background: var(--creme); }

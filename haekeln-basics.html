@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Häkeln lernen: Die Basics für Anfänger | PrettyCrochet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --creme:   #FAF6F1;
+      --salbei:  #A7B39A;
+      --beige:   #D6C5B5;
+      --braun:   #8B6F5B;
+      --espresso:#4A3B32;
+      --white:   #FFFFFF;
+      --muted:   #9A8880;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--creme);
+      color: var(--espresso);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 6vw;
+      background: rgba(250,246,241,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--beige);
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--espresso);
+      letter-spacing: 0.02em;
+    }
+    .logo-text span { color: var(--salbei); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--espresso);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--salbei); }
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--espresso);
+      padding: 0.6rem 1.4rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--braun); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 11rem 10vw 5rem;
+      background: var(--beige);
+      text-align: center;
+    }
+    .breadcrumb {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--braun);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--braun); text-decoration: none; border-bottom: 1px solid rgba(139,111,91,0.35); }
+    .breadcrumb a:hover { border-color: var(--braun); }
+    .page-hero .label { justify-content: center; }
+    .page-hero .label::before { display: none; }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--espresso);
+      margin-bottom: 1.2rem;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--braun); }
+    .page-hero p.sub {
+      max-width: 50ch;
+      margin: 0 auto;
+      color: var(--braun);
+      font-size: 1rem;
+    }
+
+    .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--salbei);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .label::before { content:''; display:inline-block; width:24px; height:1px; background:var(--salbei); }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: italic; color: var(--braun); }
+
+    section { padding: 5rem 10vw; }
+
+    /* ── INTRO TEXT ── */
+    .intro-section { background: var(--white); }
+    .intro-text {
+      max-width: 70ch;
+      font-size: 1.02rem;
+      color: var(--espresso);
+    }
+    .intro-text p { margin-bottom: 1.2rem; }
+
+    /* ── MATERIAL CHECKLIST ── */
+    .material-section { background: var(--creme); }
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--beige);
+      border: 1px solid var(--beige);
+    }
+    .material-item {
+      background: var(--white);
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .material-icon { font-size: 1.7rem; }
+    .material-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+    .material-item p { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── STEP LIST (Grundhaltung) ── */
+    .steps-section { background: var(--white); }
+    .steps-list { display: flex; flex-direction: column; gap: 0; max-width: 74ch; }
+    .step-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.6rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--beige);
+    }
+    .step-row:first-child { padding-top: 0; }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--salbei);
+    }
+    .step-content { flex: 1; min-width: 0; }
+    .step-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .step-content p { font-size: 0.92rem; color: var(--muted); }
+
+    /* Kleines Bild rechts neben dem Schritt-Text */
+    .step-image {
+      flex-shrink: 0;
+      align-self: center;
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    @media (max-width: 480px) {
+      .step-image { width: 64px; height: 64px; }
+    }
+
+    /* ── STITCH CARDS (Grundmaschen) ── */
+    .stitch-section { background: var(--creme); }
+    .stitch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .stitch-card {
+      background: var(--white);
+      padding: 2.2rem;
+      border-left: 3px solid var(--salbei);
+    }
+    .stitch-abbr {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--braun);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 0.9rem;
+    }
+    .stitch-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.7rem;
+    }
+    .stitch-card p { font-size: 0.9rem; color: var(--muted); }
+    .stitch-card ol {
+      margin-top: 0.9rem;
+      padding-left: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--espresso);
+    }
+    .stitch-card ol li { margin-bottom: 0.4rem; }
+
+    /* ── TIPP BOX ── */
+    .tipp-section { background: var(--espresso); }
+    .tipp-section .label { color: var(--salbei); }
+    .tipp-section .label::before { background: var(--salbei); }
+    .tipp-section h2 { color: var(--creme); }
+    .tipp-section h2 em { color: var(--salbei); }
+    .tipp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .tipp-item {
+      background: var(--espresso);
+      padding: 2rem 1.6rem;
+    }
+    .tipp-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--creme);
+      margin-bottom: 0.6rem;
+    }
+    .tipp-item p { font-size: 0.85rem; color: var(--beige); }
+
+    /* ── NEXT STEP CTA ── */
+    .next-section {
+      background: var(--beige);
+      text-align: center;
+      padding: 5rem 10vw;
+    }
+    .next-section .label { justify-content: center; }
+    .next-section .label::before { display: none; }
+    .next-section p { color: var(--braun); max-width: 44ch; margin: 0 auto 2rem; font-size: 0.95rem; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--espresso);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--braun); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--espresso);
+      color: var(--beige);
+      padding: 4rem 10vw 2rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(214,197,181,0.15);
+      margin-bottom: 2rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--creme);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .footer-logo span { color: var(--salbei); }
+    footer p { font-size: 0.83rem; color: rgba(214,197,181,0.6); line-height: 1.8; max-width: 32ch; }
+    footer h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--salbei);
+      margin-bottom: 1.2rem;
+    }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    footer ul a { font-size: 0.84rem; color: rgba(214,197,181,0.7); text-decoration: none; transition: color 0.2s; }
+    footer ul a:hover { color: var(--creme); }
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(214,197,181,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .material-grid { grid-template-columns: 1fr; }
+      .stitch-grid { grid-template-columns: 1fr; }
+      .tipp-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .step-row { grid-template-columns: 40px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo-wrap">
+    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="17" cy="17" r="11" stroke="#A7B39A" stroke-width="1.5" fill="none"/>
+      <path d="M10 14 Q17 10 24 14" stroke="#A7B39A" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M9 18 Q17 22 25 18" stroke="#A7B39A" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <line x1="24" y1="6" x2="10" y2="28" stroke="#4A3B32" stroke-width="1.8" stroke-linecap="round"/>
+      <ellipse cx="22.5" cy="8.5" rx="1.8" ry="1" transform="rotate(-52 22.5 8.5)" stroke="#4A3B32" stroke-width="1.2" fill="none"/>
+      <path d="M10 28 Q7 32 11 33" stroke="#8B6F5B" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-text">Pretty<span>Crochet</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Anleitungen</a></li>
+    <li><a href="#" class="active">Materialien</a></li>
+    <li><a href="index.html#newsletter">Empfehlungen</a></li>
+    <li><a href="#">Über mich</a></li>
+  </ul>
+  <a href="index.html#newsletter" class="nav-cta">Newsletter</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="breadcrumb"><a href="index.html">Start</a> · Für Anfänger</p>
+  <div class="label">Für Anfänger</div>
+  <h1>Häkeln lernen:<br>Die <em>Basics</em> für den Einstieg</h1>
+  <p class="sub">Alles, was du wissen musst, bevor du mit deinem ersten Projekt startest – Material, Grundhaltung und die wichtigsten Maschen einfach erklärt.</p>
+</section>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="label">Los geht's</div>
+  <h2>Bevor du <em>startest</em></h2>
+  <div class="intro-text">
+    <p>Häkeln ist eine der entspanntesten Handarbeiten überhaupt – du brauchst nur eine Nadel, etwas Garn und ein bisschen Geduld. Am Anfang sieht die Maschenstruktur vielleicht noch verwirrend aus, aber mit ein paar Grundmaschen und etwas Übung entsteht schon nach kurzer Zeit dein erstes kleines Projekt.</p>
+    <p>Diese Seite begleitet dich Schritt für Schritt: von der richtigen Ausstattung über die Grundhaltung von Nadel und Garn bis zu den vier wichtigsten Maschen, die in fast jeder Anleitung vorkommen.</p>
+  </div>
+</section>
+
+<!-- MATERIAL -->
+<section class="material-section">
+  <div class="label">Ausstattung</div>
+  <h2>Das brauchst du <em>zum Start</em></h2>
+  <div class="material-grid">
+    <div class="material-item">
+      <span class="material-icon">🪝</span>
+      <h3>Häkelnadel</h3>
+      <p>Für den Einstieg eignet sich eine mittlere Stärke, z. B. 4–5 mm, gut zu handhabendes Garn.</p>
+    </div>
+    <div class="material-item">
+      <span class="material-icon">🧶</span>
+      <h3>Garn</h3>
+      <p>Glattes, helles Baumwoll- oder Acrylgarn ist anfangs leichter zu sehen als flauschiges Garn.</p>
+    </div>
+    <div class="material-item">
+      <span class="material-icon">✂️</span>
+      <h3>Schere</h3>
+      <p>Eine kleine, scharfe Schere zum sauberen Abschneiden des Garns.</p>
+    </div>
+    <div class="material-item">
+      <span class="material-icon">📏</span>
+      <h3>Maßband</h3>
+      <p>Praktisch, um die Maschenprobe oder Projektgröße zu überprüfen.</p>
+    </div>
+    <div class="material-item">
+      <span class="material-icon">🔖</span>
+      <h3>Maschenmarkierer</h3>
+      <p>Hilft dir, den Rundenanfang oder wichtige Stellen im Muster zu markieren.</p>
+    </div>
+    <div class="material-item">
+      <span class="material-icon">🪡</span>
+      <h3>Vernähnadel</h3>
+      <p>Eine stumpfe Sticknadel mit großem Öhr zum Vernähen der Fäden am Ende.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GRUNDHALTUNG -->
+<section class="steps-section">
+  <div class="label">Schritt 1</div>
+  <h2>Die richtige <em>Grundhaltung</em></h2>
+  <div class="steps-list">
+    <div class="step-row">
+      <span class="step-num">01</span>
+      <div class="step-content">
+        <h3>Nadel halten</h3>
+        <p>Halte die Häkelnadel wie einen Stift zwischen Daumen und Zeigefinger, oder umfasse sie wie ein Messer – probiere aus, was sich für dich entspannter anfühlt.</p>
+      </div>
+      <img class="step-image" src="assets/haekelnadel-halten.png" alt="Häkelnadel richtig halten"/>
+    </div>
+    <div class="step-row">
+      <span class="step-num">02</span>
+      <div class="step-content">
+        <h3>Garn führen</h3>
+        <p>Leg das Garn über die Finger deiner anderen Hand, sodass du eine gleichmäßige Spannung erzeugen kannst. Zu locker rutscht das Garn, zu straff bremst es dich aus.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <span class="step-num">03</span>
+      <div class="step-content">
+        <h3>Entspannt sitzen</h3>
+        <p>Setz dich bequem hin, die Arme locker angewinkelt. Verkrampfte Hände sind der häufigste Grund, warum Anfänger:innen schnell frustriert aufgeben.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <span class="step-num">04</span>
+      <div class="step-content">
+        <h3>Übe an einem Probestück</h3>
+        <p>Bevor du dein erstes richtiges Projekt startest, häkle ein paar Reihen zur Übung – ganz ohne Anspruch an das Ergebnis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRUNDMASCHEN -->
+<section class="stitch-section">
+  <div class="label">Schritt 2</div>
+  <h2>Die 4 <em>Grundmaschen</em></h2>
+  <div class="stitch-grid">
+    <div class="stitch-card">
+      <span class="stitch-abbr">Lm</span>
+      <h3>Luftmasche</h3>
+      <p>Die Basis fast jeder Anleitung – damit beginnst du deine Grundkette.</p>
+      <ol>
+        <li>Schlinge das Garn um die Nadel</li>
+        <li>Ziehe eine Schlaufe durch die vorherige Masche</li>
+        <li>Wiederhole für die gewünschte Kettenlänge</li>
+      </ol>
+    </div>
+    <div class="stitch-card">
+      <span class="stitch-abbr">fM</span>
+      <h3>Feste Masche</h3>
+      <p>Die dichteste und stabilste Grundmasche – ideal für Amigurumi.</p>
+      <ol>
+        <li>Nadel in die Masche einstechen</li>
+        <li>Garn holen und durchziehen (2 Schlaufen auf der Nadel)</li>
+        <li>Erneut Garn holen und durch beide Schlaufen ziehen</li>
+      </ol>
+    </div>
+    <div class="stitch-card">
+      <span class="stitch-abbr">hStb</span>
+      <h3>Halbes Stäbchen</h3>
+      <p>Etwas lockerer als die feste Masche, wächst schneller in die Höhe.</p>
+      <ol>
+        <li>Einmal Garn über die Nadel legen (Umschlag)</li>
+        <li>In die Masche einstechen und Garn holen (3 Schlaufen)</li>
+        <li>Garn holen, durch alle 3 Schlaufen ziehen</li>
+      </ol>
+    </div>
+    <div class="stitch-card">
+      <span class="stitch-abbr">Stb</span>
+      <h3>Stäbchen</h3>
+      <p>Luftiger und höher – perfekt für Decken, Schals und Tücher.</p>
+      <ol>
+        <li>Umschlag, dann in die Masche einstechen</li>
+        <li>Garn holen und durch 2 Schlaufen ziehen</li>
+        <li>Garn erneut holen, durch die letzten 2 Schlaufen ziehen</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- TIPPS -->
+<section class="tipp-section">
+  <div class="label">Für den Anfang</div>
+  <h2>Meine <em>Tipps</em> für dich</h2>
+  <div class="tipp-grid">
+    <div class="tipp-item">
+      <h3>Geduld mitbringen</h3>
+      <p>Die ersten Maschen werden selten perfekt gleichmäßig – das ist völlig normal und gibt sich mit der Zeit.</p>
+    </div>
+    <div class="tipp-item">
+      <h3>Kleine Projekte zuerst</h3>
+      <p>Starte mit einem Übungsquadrat oder einer kleinen Amigurumi-Figur statt direkt mit einer großen Decke.</p>
+    </div>
+    <div class="tipp-item">
+      <h3>Anleitungen zweimal lesen</h3>
+      <p>Lies eine Anleitung einmal ganz durch, bevor du loshäkelst – so verstehst du den Aufbau besser.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NÄCHSTER SCHRITT -->
+<section class="next-section">
+  <div class="label">Bereit?</div>
+  <h2>Dein erstes <em>Projekt</em></h2>
+  <p>Sobald du die Grundmaschen sicher beherrschst, ist der Häkel-Bär die perfekte erste Anleitung für den Einstieg in Amigurumi.</p>
+  <a href="index.html" class="btn-primary">Zu den Anleitungen</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">Pretty<span>Crochet</span></span>
+      <p>Ein Blog über die Liebe zum Häkeln – mit ehrlichen Empfehlungen, kostenlosen Anleitungen und einer Community für alle, die mit Wolle und Nadel Dinge erschaffen.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Anleitungen</a></li>
+        <li><a href="#">Materialien</a></li>
+        <li><a href="index.html#newsletter">Empfehlungen</a></li>
+        <li><a href="#">Über mich</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Rechtliches</h4>
+      <ul>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Datenschutz</a></li>
+        <li><a href="#">Affiliate-Hinweis</a></li>
+        <li><a href="#">Cookie-Einstellungen</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 PrettyCrochet · Natürlich. Zeitlos. Handgemacht.</div>
+</footer>
+
+</body>
+</html>
